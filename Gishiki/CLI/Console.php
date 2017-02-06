@@ -76,9 +76,15 @@ abstract class Console
      *
      * @param mixed $color the console color code to use
      */
-    public static function ForegroundColor($color)
+    public static function ForegroundColor($color = null)
     {
-        self::$foreground_color = $color;
+        switch (strtolower(gettype($color))) {
+            case 'null':
+                return self::$foreground_color;
+
+            default:
+                self::$foreground_color = $color;
+        }
     }
     
     /**
@@ -86,9 +92,15 @@ abstract class Console
      *
      * @param mixed $color the console color code to use
      */
-    public static function BackgroundColor($color)
+    public static function BackgroundColor($color = null)
     {
-        self::$background_color = $color;
+        switch (strtolower(gettype($color))) {
+            case 'null':
+                return self::$background_color;
+
+            default:
+                self::$background_color = $color;
+        }        
     }
     
     /**
